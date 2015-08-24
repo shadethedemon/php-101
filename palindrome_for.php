@@ -20,8 +20,10 @@ $input = isset($argv[1]) ? $argv[1] : die("No input given\n");
  * Output: Yes, '10101' is a palindrome!
  */
 
-if (strcasecmp($input, strrev($input)) === 0) {
-    die("Yes, '{$input}' is a palindrome!\n");
+for ($i = 0; $i < strlen($input); $i++) {
+    if ($input[$i] !== $input[strlen($input) - ($i + 1)]) {
+        die("No, '{$input}' is not a palindrome.\n");
+    }
 }
 
-echo "No, '{$input}' is not a palindrome.\n";
+echo "Yes, '{$input}' is a palindrome!\n";

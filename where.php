@@ -11,24 +11,17 @@ $books = require_once __DIR__ . '/books.php';
 
 $list = [];
 
-$time =  970372800;
-echo jdtojulian(unixtojd($time)), PHP_EOL;
-exit;
-
-
 foreach ($books as $book) {
     foreach ($book as $k => $v) {
         $pos = strpos(strtolower($v), strtolower($value));
         if ($k == $index && $pos !== false) {
             $list[] = $book['id']; 
         }
-        if ($index == 'publishDate') {
-//            echo jdtojulian(970372800);
-        } 
     }
 }
 
+echo "You searched for {$index} and {$value}. We found:" . PHP_EOL;
+
 foreach($list as $hit) {
-    echo $hit . PHP_EOL;
-    echo $books[$hit]['author'] . PHP_EOL;
+    echo "Book id: " . $books[$hit]['id'] . ", by author " . $books[$hit]['author'] . PHP_EOL;
 }

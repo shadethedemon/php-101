@@ -9,4 +9,19 @@ $books = require_once __DIR__ . '/books.php';
  * has the value of $value. Echo the id and title of each book that matches the given criteria.
  */
 
+$list = [];
 
+foreach ($books as $book) {
+    foreach ($book as $k => $v) {
+        $pos = strpos(strtolower($v), strtolower($value));
+        if ($k == $index && $pos !== false) {
+            $list[] = $book['id']; 
+        }
+    }
+}
+
+echo "You searched for {$index} and {$value}. We found:" . PHP_EOL;
+
+foreach($list as $hit) {
+    echo "Book id: " . $books[$hit]['id'] . ", by author " . $books[$hit]['author'] . PHP_EOL;
+}
